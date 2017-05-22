@@ -1,3 +1,11 @@
+;; Remove the section .text you copy/pasted from the Bare Bones tutorial ;)
+section .__mbHeader
+ 
+align 0x4
+;; Copy/Paste your current Multiboot Header here
+ 
+;; Reposition the section .text here.
+
 /* The bootloader will look at this image and start execution at the symbol
    designated as the entry point. */
 ENTRY(_start)
@@ -6,6 +14,9 @@ ENTRY(_start)
    kernel image. */
 SECTIONS
 {
+	.__mbHeader : {
+      *(.__mbHeader)
+   }
 	/* Begin putting sections at 1 MiB, a conventional place for kernels to be
 	   loaded at by the bootloader. */
 	. = 1M;

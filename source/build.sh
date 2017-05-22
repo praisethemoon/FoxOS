@@ -6,7 +6,7 @@ echo "** Fox Operating System **"
 echo "Written by Chouri Soulaymen"
 
 echo "Assembling kernel"
-nasm -felf kernel_start.asm -o ks.o
+nasm -felf64 kernel_start.asm -o ks.o
 
 echo "Compiling C kernel"
 gcc -Wall -O -fstrength-reduce -fomit-frame-pointer -finline-functions -nostdinc -fno-builtin -I./ -c -o kernel.o kernel.c
@@ -28,4 +28,4 @@ grub-mkrescue -o fox.iso isodir
 
 rm *.o
 
-qemu fox.iso
+qemu-system-x86_64 fox.iso

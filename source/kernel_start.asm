@@ -25,7 +25,11 @@ align 4
 stack_bottom:
 times 16384 db 0
 stack_top:
+
+section .__mbHeader
  
+align 0x4
+
 ; The linker script specifies _start as the entry point to the kernel and the
 ; bootloader will jump to this position once the kernel has been loaded. It
 ; doesn't make sense to return from this function as the bootloader is gone.
